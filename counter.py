@@ -38,7 +38,7 @@ for repo in list_of_links_to_repos:
                                 Words_dict[word] += 1
 
     subprocess.run(['rm', '-rf', name_of_repo])
-
+print('\nTotal:')
 print('Lines:',Lines)
 print('Words:',Words)
 print('Signs:',Signs)
