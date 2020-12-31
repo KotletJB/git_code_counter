@@ -3,9 +3,8 @@
 import os
 import subprocess
 import re 
-import tqdm
 
-list_of_subfixs = ('.py','.cpp','.hpp','.h','.c')
+list_of_suffixs = ('.py','.cpp','.hpp','.h','.c','.js','.css','.html','.swift')
 list_of_links_to_repos = ['https://github.com/KotletJB/file_observer.git','https://github.com/marcusva/py-sdl2.git','https://github.com/mx0c/super-mario-python.git']
 
 Words_dict = {}
@@ -21,7 +20,7 @@ for repo in list_of_links_to_repos:
     # r=root, d=directories, f = files
     for r, d, f in os.walk(thisdir):
         for file in f:
-            if file.endswith(list_of_subfixs):
+            if file.endswith(list_of_suffixs):
                 fille = os.path.join(r, file)
                 with open(fille) as f:
                     list_of_lines = f.readlines()
