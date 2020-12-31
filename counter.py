@@ -10,7 +10,7 @@ list_of_links_to_repos = ['https://github.com/KotletJB/file_observer.git','https
 
 Words_dict = {}
 Lines = 0
-Sings = 0
+Signs = 0
 Words = 0
 
 for repo in list_of_links_to_repos:
@@ -28,7 +28,7 @@ for repo in list_of_links_to_repos:
                     Lines += len(list_of_lines)
 
                     for line in list_of_lines:
-                        Sings += len(line)
+                        Signs += len(line)
                         lin = line.strip().split()
                         Words += len(lin)
                         for word in lin:
@@ -41,6 +41,6 @@ for repo in list_of_links_to_repos:
 
 print('Lines:',Lines)
 print('Words:',Words)
-print('Sings:',Sings)
+print('Signs:',Signs)
 sort_dic = dict(sorted(Words_dict.items(), key= lambda item: item[1], reverse=True))
 print(sort_dic)    
