@@ -43,9 +43,6 @@ print('Lines:',Lines)
 print('Words:',Words)
 print('Signs:',Signs)
 sort_dic = dict(sorted(Words_dict.items(), key= lambda item: item[1], reverse=True))
-
-
 data = pd.DataFrame(sort_dic.items(), columns=['word','count'])
 
 print(data.head(10))
-
