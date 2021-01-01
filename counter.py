@@ -23,8 +23,8 @@ for repo in list_of_links_to_repos:
         for file in f:
             if file.endswith(list_of_suffixs):
                 fille = os.path.join(r, file)
-                with open(fille) as f:
-                    list_of_lines = f.readlines()
+                with open(fille) as fp:
+                    list_of_lines = fp.readlines()
                     Lines += len(list_of_lines)
 
                     for line in list_of_lines:
