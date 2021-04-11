@@ -20,30 +20,33 @@ def counter(list_of_links_to_repos = list_of_links_to_repos):
     Words = 0
 
     for repo in list_of_links_to_repos:
-        name_of_repo = re.findall('/([0-9A-Za-z_-]+)\.git',repo)[0]
-        subprocess.run(['git', 'clone', repo])
+        try:
+            name_of_repo = re.findall('/([0-9A-Za-z_-]+)\.git',repo)[0]
+            subprocess.run(['git', 'clone', repo])
 
-        thisdir = os.getcwd() + '/' + name_of_repo
-        # r=root, d=directories, f = files
-        for r, d, f in os.walk(thisdir):
-            for file in f:
-                if file.endswith(list_of_suffixs):
-                    fille = os.path.join(r, file)
-                    with open(fille) as fp:
-                        list_of_lines = fp.readlines()
-                        Lines += len(list_of_lines)
+            thisdir = os.getcwd() + '/' + name_of_repo
+            # r=root, d=directories, f = files
+            for r, d, f in os.walk(thisdir):
+                for file in f:
+                    if file.endswith(list_of_suffixs):
+                        fille = os.path.join(r, file)
+                        with open(fille) as fp:
+                            list_of_lines = fp.readlines()
+                            Lines += len(list_of_lines)
 
-                        for line in list_of_lines:
-                            Signs += len(line)
-                            lin = line.strip().split()
-                            Words += len(lin)
-                            for word in lin:
-                                if word not in Words_dict:
-                                    Words_dict[word] = 1
-                                else:
-                                    Words_dict[word] += 1
+                            for line in list_of_lines:
+                                Signs += len(line)
+                                lin = line.strip().split()
+                                Words += len(lin)
+                                for word in lin:
+                                    if word not in Words_dict:
+                                        Words_dict[word] = 1
+                                    else:
+                                        Words_dict[word] += 1
 
-        subprocess.run(['rm', '-rf', name_of_repo])
+            subprocess.run(['rm', '-rf', name_of_repo])
+        except:
+            pass
     print('\nTotal:')
     print('Lines:',Lines)
     print('Words:',Words)
